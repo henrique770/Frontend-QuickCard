@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
@@ -31,9 +30,9 @@ export default function SideBar() {
                   alt="QuickCardLogo"
                 />
               </Link>
-              <div id="close-sidebar">
+              {/* <div id="close-sidebar">
                 <FontAwesomeIcon icon={faTimes} />
-              </div>
+              </div> */}
             </div>
 
             <div className="sidebar-menu">
