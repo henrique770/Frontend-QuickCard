@@ -60,12 +60,12 @@ export default createGlobalStyle`
   background: #636269;
 }
 ::-webkit-scrollbar-track {
-  background: #333238;
+  background: #fff;
   border: 0px none #ffffff;
   border-radius: 50px;
 }
 ::-webkit-scrollbar-track:hover {
-  background: #333238;
+  background: #fff;
 }
 ::-webkit-scrollbar-track:active {
   background: #333238;
