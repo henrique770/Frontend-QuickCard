@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
-  faTimes,
   faBars,
   faPlus,
   faStickyNote,
@@ -40,43 +39,67 @@ export default function SideBar() {
                 <li className="header-menu">
                   <span>Geral</span>
                 </li>
+
                 <li className="sidebar-dropdown">
-                  <Link className="alignList" to="/">
-                    <div className="icon_format">
-                      <FontAwesomeIcon icon={faPlus} />
+                  <div>
+                    <span>
+                      <a
+                        className="alignList"
+                        data-toggle="collapse"
+                        href="#criar"
+                      >
+                        <div className="icon_format">
+                          <FontAwesomeIcon icon={faPlus} />
+                        </div>
+                        <span> Criar</span>
+                      </a>
+                    </span>
+                  </div>
+
+                  <div className="collapse" id="criar">
+                    <div className="card card-body">
+                      <ul>
+                        <li>
+                          <Link to="/">Nova Nota</Link>
+                        </li>
+                        <li>
+                          <Link to="/">Novo Cartão</Link>
+                        </li>
+                        <li>
+                          <Link to="/">Novo Baralho</Link>
+                        </li>
+                      </ul>
                     </div>
-                    <span>Criar</span>
-                  </Link>
-                  <div className="sidebar-submenu">
-                    <ul>
-                      <li>
-                        <Link to="/">Nova Nota</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Novo Cronograma</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Novo Cartão</Link>
-                      </li>
-                    </ul>
                   </div>
                 </li>
+
                 <li className="sidebar-dropdown">
-                  <Link className="alignList" to="/">
-                    <div className="icon_format">
-                      <FontAwesomeIcon icon={faStickyNote} />
+                  <div>
+                    <span>
+                      <a
+                        className="alignList"
+                        data-toggle="collapse"
+                        href="#notas"
+                      >
+                        <div className="icon_format">
+                          <FontAwesomeIcon icon={faStickyNote} />
+                        </div>
+                        <span> Notas</span>
+                      </a>
+                    </span>
+                  </div>
+
+                  <div className="collapse" id="notas">
+                    <div className="card card-body">
+                      <ul>
+                        <li>
+                          <Link to="/dashboard">Todas as notas</Link>
+                        </li>
+                        <li>
+                          <Link to="/">Blocos</Link>
+                        </li>
+                      </ul>
                     </div>
-                    <span>Notas</span>
-                  </Link>
-                  <div className="sidebar-submenu">
-                    <ul>
-                      <li>
-                        <Link to="/">Todas as Notas</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Blocos</Link>
-                      </li>
-                    </ul>
                   </div>
                 </li>
 
