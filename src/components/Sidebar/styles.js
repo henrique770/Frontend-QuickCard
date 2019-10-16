@@ -83,7 +83,7 @@ export const Container = styled.div`
   /*----------------sidebar-wrapper----------------*/
 
   .sidebar-wrapper {
-    width: 260px;
+    width: 235px;
     height: 100%;
     max-height: 100%;
     position: fixed;
@@ -96,10 +96,6 @@ export const Container = styled.div`
     list-style-type: none;
     padding: 0;
     margin: 0;
-  }
-
-  .sidebar-wrapper a {
-    text-decoration: none;
   }
 
   /*----------------sidebar-content----------------*/
@@ -134,55 +130,6 @@ export const Container = styled.div`
     font-size: 20px;
   }
   /*--------------------sidebar-header----------------------*/
-
-  .sidebar-wrapper .sidebar-header {
-    padding: 20px;
-    overflow: hidden;
-  }
-
-  .sidebar-wrapper .sidebar-header .user-pic {
-    float: left;
-    width: 60px;
-    padding: 2px;
-    border-radius: 12px;
-    margin-right: 15px;
-    overflow: hidden;
-  }
-
-  .sidebar-wrapper .sidebar-header .user-pic img {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-  }
-
-  .sidebar-wrapper .sidebar-header .user-info {
-    float: left;
-  }
-
-  .sidebar-wrapper .sidebar-header .user-info > span {
-    display: block;
-  }
-
-  .sidebar-wrapper .sidebar-header .user-info .user-role {
-    font-size: 12px;
-  }
-
-  .sidebar-wrapper .sidebar-header .user-info .user-status {
-    font-size: 11px;
-    margin-top: 4px;
-  }
-
-  .sidebar-wrapper .sidebar-header .user-info .user-status i {
-    font-size: 8px;
-    margin-right: 4px;
-    color: #5cb85c;
-  }
-
-  /*-----------------------sidebar-search------------------------*/
-
-  .sidebar-wrapper .sidebar-search > div {
-    padding: 10px 20px;
-  }
 
   /*----------------------sidebar-menu-------------------------*/
 
@@ -278,8 +225,6 @@ export const Container = styled.div`
 
   /*--------------------------side-footer------------------------------*/
 
- 
-
   /*------scroll bar---------------------*/
 
   ::-webkit-scrollbar {
@@ -370,5 +315,12 @@ export const Container = styled.div`
   .alignList {
     display: flex !important;
     align-items: center !important;
+  }
+
+  .card {
+    background-color: #2b2b2b !important;
+  }
+  .card-body {
+    padding: 0.25rem !important;
   }
 `;
