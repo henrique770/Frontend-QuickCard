@@ -54,7 +54,13 @@ export default function Dashboard() {
         <div className="">
           <SideBar />
         </div>
+        <div className="topbar">
+          <div className="containerside">
+            test
+          </div>
+        </div>
         <div className=" containerside">
+          
           <div className="row mt-4 mr-4">
             <div className="col-md-3">
               <Notes notas={notas} />
