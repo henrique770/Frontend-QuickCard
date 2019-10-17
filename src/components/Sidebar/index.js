@@ -7,7 +7,6 @@ import {
   faPlus,
   faStickyNote,
   faAlignJustify,
-  faCalendar,
 } from '@fortawesome/free-solid-svg-icons';
 import { Container } from './styles';
 import logo from '~/assets/white_main_logo.svg';
@@ -109,14 +108,6 @@ export default function SideBar() {
                       <FontAwesomeIcon icon={faAlignJustify} />
                     </div>
                     <span>Baralhos</span>
-                  </Link>
-                </li>
-                <li className="sidebar">
-                  <Link className="alignList" to="/">
-                    <div className="icon_format">
-                      <FontAwesomeIcon icon={faCalendar} />
-                    </div>
-                    <span>Cronogramas</span>
                   </Link>
                 </li>
               </ul>

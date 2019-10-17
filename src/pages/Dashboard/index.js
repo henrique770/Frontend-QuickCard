@@ -60,9 +60,9 @@ export default function Dashboard() {
               <Notes notas={notas} />
             </div>
             <div className="col-md-9">
-            <Editor />
+              <Editor />
+            </div>
           </div>
-        </div>
         </div>
       </Container>
     </>
