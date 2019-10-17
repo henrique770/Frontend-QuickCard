@@ -6,6 +6,7 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 
 import Dashboard from '../pages/Dashboard';
+import AddNote from '../pages/AddNote';
 import Profile from '../pages/Profile';
 
 export default function Routes() {
@@ -15,6 +16,7 @@ export default function Routes() {
       <Route path="/cadastro" component={SignUp} />
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
+      <Route path="/addnote" component={AddNote} isPrivate />
       <Route path="/perfil" component={Profile} isPrivate />
     </Switch>
   );
