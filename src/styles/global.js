@@ -68,7 +68,7 @@ export default createGlobalStyle`
   background: #fff;
 }
 ::-webkit-scrollbar-track:active {
-  background: #333238;
+  background: #fff;
 }
 ::-webkit-scrollbar-corner {
   background: transparent;
