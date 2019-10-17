@@ -59,7 +59,7 @@ export default function SideBar() {
                     <div className="card card-body">
                       <ul>
                         <li>
-                          <Link to="/">Nova Nota</Link>
+                          <Link to="/addnote">Nova Nota</Link>
                         </li>
                         <li>
                           <Link to="/">Novo Cartão</Link>
