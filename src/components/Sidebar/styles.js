@@ -114,7 +114,7 @@ export const Container = styled.div`
   /*--------------------sidebar-brand----------------------*/
 
   .sidebar-wrapper .sidebar-brand {
-    padding: 10px 20px;
+    padding: 0px 20px;
     display: flex;
     align-items: center;
   }
