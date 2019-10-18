@@ -7,6 +7,10 @@ import SignUp from '../pages/SignUp';
 
 import Dashboard from '../pages/Dashboard';
 import AddNote from '../pages/AddNote';
+import AddCard from '../pages/AddCard';
+import AddDeck from '../pages/AddDeck';
+import NotePads from '../pages/NotePads';
+import Decks from '../pages/Decks';
 import Profile from '../pages/Profile';
 
 export default function Routes() {
@@ -17,6 +21,10 @@ export default function Routes() {
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/addnote" component={AddNote} isPrivate />
+      <Route path="/addcard" component={AddCard} isPrivate />
+      <Route path="/adddeck" component={AddDeck} isPrivate />
+      <Route path="/notepads" component={NotePads} isPrivate />
+      <Route path="/decks" component={Decks} isPrivate />
       <Route path="/perfil" component={Profile} isPrivate />
     </Switch>
   );

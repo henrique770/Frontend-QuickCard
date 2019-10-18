@@ -62,10 +62,10 @@ export default function SideBar() {
                           <Link to="/addnote">Nova Nota</Link>
                         </li>
                         <li>
-                          <Link to="/">Novo Cartão</Link>
+                          <Link to="/addcard">Novo Cartão</Link>
                         </li>
                         <li>
-                          <Link to="/">Novo Baralho</Link>
+                          <Link to="/adddeck">Novo Baralho</Link>
                         </li>
                       </ul>
                     </div>
@@ -95,7 +95,7 @@ export default function SideBar() {
                           <Link to="/dashboard">Todas as notas</Link>
                         </li>
                         <li>
-                          <Link to="/">Blocos</Link>
+                          <Link to="/notepads">Blocos</Link>
                         </li>
                       </ul>
                     </div>
@@ -103,7 +103,7 @@ export default function SideBar() {
                 </li>
 
                 <li className="sidebar">
-                  <Link className="alignList" to="/">
+                  <Link className="alignList" to="/decks">
                     <div className="icon_format">
                       <FontAwesomeIcon icon={faAlignJustify} />
                     </div>
