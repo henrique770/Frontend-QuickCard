@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  .containerside {
-    margin-left: 270px;
-  }
   .Button {
     background: linear-gradient(-90deg, #fe650e, #f93b10);
     font-weight: bold;
@@ -17,16 +14,18 @@ export const Container = styled.div`
   .Button:hover {
     background: linear-gradient(-90deg, #f93b10, #fe650e);
   }
-  .dflex {
-    display: flex;
-  }
 
   .item {
     margin: 0 15px;
-    max-width: 260px;
+    width: 290px;
+    text-align: center;
   }
-  .wrap {
-    flex-wrap: wrap;
+  .Jumbotron_height {
+    height: 230px;
+    padding: 30px 15px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .grow1 {
     flex-grow: 1;

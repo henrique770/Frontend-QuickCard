@@ -1,10 +1,17 @@
 import React from 'react';
 import SideBar from '~/components/Sidebar';
+import Box from '~/components/Box';
 import { Container } from './styles';
-import { Jumbotron } from 'react-bootstrap';
 
-export default function Decks() {
-
+export default function NotePads() {
+  const decks = [
+    {
+      titulo: 'Bash / Terminal Linux',
+    },
+    {
+      titulo: 'Expressões em inglês / frases / palavras',
+    },
+  ];
   return (
     <>
       <Container>
@@ -12,67 +19,9 @@ export default function Decks() {
           <SideBar />
         </div>
         <div className=" containerside">
-          
           <div className="row mt-4 mr-4 dflex">
-          
-            <div className="item grow1">
-              <Jumbotron>
-                <h3>Bash e terminal Linux</h3>
-                
-                <div className="Button">Estudar</div>
-                
-              </Jumbotron>
-            </div>
-            <div className="item grow1">
-              <Jumbotron>
-                <h3>Bash e terminal Linux</h3>
-                
-                <div className="Button">Estudar</div>
-                
-              </Jumbotron>
-            </div>
-            <div className="item grow1">
-              <Jumbotron>
-                <h3>Bash e terminal Linux</h3>
-                
-                <div className="Button">Estudar</div>
-                
-              </Jumbotron>
-            </div>
-            <div className="item grow1">
-              <Jumbotron>
-                <h3>Bash e terminal Linux</h3>
-                
-                <div className="Button">Estudar</div>
-                
-              </Jumbotron>
-            </div>
-            <div className="item grow1">
-              <Jumbotron>
-                <h3>Bash e terminal Linux</h3>
-                
-                <div className="Button">Estudar</div>
-                
-              </Jumbotron>
-            </div>
-            <div className="item grow1">
-              <Jumbotron>
-                <h3>Bash e terminal Linux</h3>
-                
-                <div className="Button">Estudar</div>
-                
-              </Jumbotron>
-            </div>
-            <div className="item grow1">
-              <Jumbotron>
-                <h3>Bash e terminal Linux</h3>
-                
-                <div className="Button">Estudar</div>
-                
-              </Jumbotron>
-            </div>
+            <Box decks={decks} />
           </div>
-          
         </div>
       </Container>
     </>
