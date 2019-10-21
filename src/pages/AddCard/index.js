@@ -1,6 +1,7 @@
 import React from 'react';
 import SideBar from '~/components/Sidebar';
 import { Container } from './styles';
+import { Form, Button } from 'react-bootstrap';
 
 export default function AddCard() {
 
@@ -12,11 +13,29 @@ export default function AddCard() {
         </div>
         
         <div className=" containerside">
-          
+        <div className="row alignT"><h1>Adicionar cartão</h1></div>
           <div className="row mt-4 mr-4">
           
-            <div className="col-md-12">
-              <h1>Adicionar Cartão</h1>
+            <div className="format_form">             
+            <Form>
+            <Form.Group >
+            
+            <Form.Control type="text" placeholder="Digite o nome do Baralho" />         
+            </Form.Group>
+
+            <Form.Group >
+            
+            <Form.Control type="text"  placeholder="Frente" />
+            </Form.Group>
+            <Form.Group >
+            
+            <Form.Control type="text" placeholder="Verso" />
+            </Form.Group>
+          
+            <Button className="Button" variant="primary" type="submit">
+            Salvar
+            </Button>
+            </Form>
             </div>
           </div>
           

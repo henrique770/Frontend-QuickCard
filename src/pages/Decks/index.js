@@ -3,7 +3,7 @@ import SideBar from '~/components/Sidebar';
 import Box from '~/components/Box';
 import { Container } from './styles';
 
-export default function NotePads() {
+export default function Decks() {
   const decks = [
     {
       titulo: 'Bash / Terminal Linux',
@@ -18,7 +18,9 @@ export default function NotePads() {
         <div className="">
           <SideBar />
         </div>
+        
         <div className=" containerside">
+        <div className="row alignT"><h1>Baralhos</h1></div>
           <div className="row mt-4 mr-4 dflex">
             <Box decks={decks} />
           </div>

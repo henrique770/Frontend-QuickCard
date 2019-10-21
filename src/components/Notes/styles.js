@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   .notes_style {
     width: 285px;
-
     padding-right: 19px;
     height: 97%;
 

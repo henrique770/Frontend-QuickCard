@@ -11,7 +11,7 @@ export default function Box({ decks }) {
             <Jumbotron className="Jumbotron_height">
               <h3>{item.titulo}</h3>
               <div className="alignbottom">
-                <div className="Button">Estudar</div>
+                <div className="Button">Acessar</div>
               </div>
             </Jumbotron>
           </div>
