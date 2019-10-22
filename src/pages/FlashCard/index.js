@@ -20,7 +20,18 @@ export default function FlashCard() {
           <div className="container">
             <Jumbotron fluid>
               <div className="container">
-                <h1 className="display-4">Fluid jumbotron</h1>
+                <h1 className="display-4">Oque faz o comando: yppasswd?</h1>
+              </div>
+            </Jumbotron>
+            <div className="alignflexbutton">
+              <div className="Button Show">Mostrar</div>
+            </div>
+            <Jumbotron id="target" fluid className="mt-4">
+              <div className="container">
+                <h1 className="display-4">
+                  Muda a password(senha) do nosso utilizador nas páginas
+                  amarelas (yellow pages)
+                </h1>
               </div>
             </Jumbotron>
           </div>

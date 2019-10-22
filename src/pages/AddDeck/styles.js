@@ -10,7 +10,7 @@ export const Container = styled.div`
     padding: 22px;
   }
   .ql-container {
-    height: 70vh!important;
+    height: 70vh !important;
     font-size: 16px;
   }
   .dflex {
@@ -22,7 +22,7 @@ export const Container = styled.div`
     margin: auto;
     text-align: center;
   }
-  Button {
+  button {
     background: linear-gradient(-90deg, #fe650e, #f93b10);
     font-weight: bold;
     color: #fff;
@@ -36,5 +36,4 @@ export const Container = styled.div`
   .Button:hover {
     background: linear-gradient(-90deg, #f93b10, #fe650e);
   }
-  
 `;
