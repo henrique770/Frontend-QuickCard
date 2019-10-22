@@ -4,9 +4,6 @@ export const Container = styled.div`
   .containerside {
     margin-left: 270px;
   }
-  .decks_style {
-    margin-left: 55px;
-  }
   .dflex {
     display: flex;
     justify-content: stretch;

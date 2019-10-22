@@ -17,53 +17,63 @@ export const Container = styled.div`
   }
   @media (min-width: 1900px) {
     .notes_style {
-      width: 390px;
+      width: 380px;
+      margin-left: 20px;
     }
   }
   @media (max-width: 1800px) {
     .notes_style {
-      width: 370px;
+      width: 350px;
+      margin-left: 20px;
     }
   }
   @media (max-width: 1700px) {
     .notes_style {
-      width: 340px;
+      width: 320px;
+      margin-left: 20px;
     }
   }
 
   @media (max-width: 1600px) {
     .notes_style {
-      width: 320px;
+      width: 300px;
+      margin-left: 20px;
     }
   }
   @media (max-width: 1500px) {
     .notes_style {
-      width: 270px;
+      width: 258px;
+      margin-left: 20px;
     }
   }
   @media (max-width: 1400px) {
     .notes_style {
-      width: 270px;
+      width: 230px;
+      margin-left: 20px;
     }
   }
   @media (max-width: 1300px) {
     .notes_style {
-      width: 230px;
+      width: 210px;
+      margin-left: 20px;
     }
   }
   @media (max-width: 1200px) {
     .notes_style {
-      width: 215px;
+      width: 195px;
+      margin-left: 20px;
     }
   }
   @media (max-width: 1100px) {
     .notes_style {
-      width: 200px;
+      width: 180px;
+      margin-left: 20px;
     }
   }
   @media (max-width: 1000px) {
     .notes_style {
-      width: 180px;
+      width: 160px;
+      margin-left: 20px;
     }
   }
 `;

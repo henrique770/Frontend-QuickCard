@@ -19,9 +19,13 @@ export default function NotePads() {
           <SideBar />
         </div>
         <div className=" containerside">
-        <div className="row alignT"><h1>Blocos de anotações</h1></div>
-          <div className="row mt-4 mr-4 dflex">
-            <Box decks={decks} />
+          <div className="notepads_style">
+            <div className="row alignT">
+              <h1>Blocos de anotações</h1>
+            </div>
+            <div className="row mt-4 mr-4 dflex">
+              <Box decks={decks} />
+            </div>
           </div>
         </div>
       </Container>

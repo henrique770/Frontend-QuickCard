@@ -6,7 +6,10 @@ export const Wrapper = styled.div`
 
   .alignT {
     display: flex;
-    margin: 20px 0px 0px 20px;
+    margin-top: 20px;
     justify-content: center;
+  }
+  .containerside {
+    margin-left: 235px !important;
   }
 `;
