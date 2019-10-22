@@ -12,7 +12,7 @@ export default function AddDeck() {
         </div>
 
         <div className=" containerside">
-          <div className="row alignT">
+          <div className="alignT">
             <h1>Adicionar baralho</h1>
           </div>
           <div className="row mt-4 mr-4">

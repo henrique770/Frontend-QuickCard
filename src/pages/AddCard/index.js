@@ -12,7 +12,7 @@ export default function AddCard() {
         </div>
 
         <div className=" containerside">
-          <div className="row alignT">
+          <div className="alignT">
             <h1>Adicionar cartão</h1>
           </div>
           <div className="row mt-4 mr-4">

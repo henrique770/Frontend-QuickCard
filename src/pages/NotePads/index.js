@@ -1,6 +1,6 @@
 import React from 'react';
 import SideBar from '~/components/Sidebar';
-import Box from '~/components/Box';
+import BoxNotePad from '~/components/BoxNotepad';
 import { Container } from './styles';
 
 export default function NotePads() {
@@ -20,11 +20,11 @@ export default function NotePads() {
         </div>
         <div className=" containerside">
           <div className="notepads_style">
-            <div className="row alignT">
+            <div className=" alignT">
               <h1>Blocos de anotações</h1>
             </div>
             <div className="row mt-4 mr-4 dflex">
-              <Box decks={decks} />
+              <BoxNotePad decks={decks} />
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ export default function FlashCard() {
         </div>
 
         <div className=" containerside">
-          <div className="row alignT">
+          <div className="alignT">
             <h1>Nome baralho</h1>
           </div>
           <div className="row mt-4 mr-4 dflex" />

@@ -22,7 +22,7 @@ export const Container = styled.div`
     margin: auto;
     text-align: center;
   }
-  Button {
+  .Button {
     background: linear-gradient(-90deg, #fe650e, #f93b10);
     font-weight: bold;
     color: #fff;
