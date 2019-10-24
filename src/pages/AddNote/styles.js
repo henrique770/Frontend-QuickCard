@@ -11,10 +11,16 @@ export const Container = styled.div`
   }
   .ql-container {
     height: 70vh!important;
+    width: 85.5vw!important;
     font-size: 16px;
   }
   .dflex {
     display: flex;
+  }
+  .editor_style {
+    position: fixed;
+    margin-right: 20px;
+    margin-left: 20px !important;
   }
 
 `;

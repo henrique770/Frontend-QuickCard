@@ -10,7 +10,7 @@ export default function AddNote() {
       <Container>
         <div className="">
           <SideBar />
-        </div>
+        </div> 
         <div className="topbar">
           <div className="containerside">
             TÍTULO
