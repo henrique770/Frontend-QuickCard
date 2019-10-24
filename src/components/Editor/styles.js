@@ -8,6 +8,6 @@ export const Container = styled.div`
   .editor_style {
     position: fixed;
     margin-right: 20px;
-    margin-left: 20px;
+    /* margin-left: 20px; */
   }
 `;
