@@ -1,13 +1,14 @@
 import React from 'react';
 // import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
-import { post } from '~/services/httpService';
+import EstudanteService from '~/services/estudante.service';
 
 // import { signInRequest } from '~/store/modules/auth/actions';
 
 import logo from '~/assets/logo_quickcard.svg';
+import RouteWrapper from '../../routes/Route';
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -15,10 +16,6 @@ const schema = Yup.object().shape({
     .required('O e-mail é obrigatório'),
   password: Yup.string().required('A senha é obrigatória'),
 });
-
-async function Http(data) {
-  return post('http://177.41.135.107:8080/authenticate', data);
-}
 
 export default function SignIn() {
   //  const dispatch = useDispatch();
@@ -34,14 +31,15 @@ export default function SignIn() {
   // }
 
   async function handleSubmit(data) {
-    const response = await Http(data);
-    console.log(response);
+    console.log('passando aqui');
 
-    if (response.jwttoken != null) {
-      localStorage.setItem('tokenObject', response);
-      localStorage.setItem('token', response.jwttoken);
+    const result = await EstudanteService.login(data.username, data.password);
+
+    if (result) {
+      window.location.reload();
+      return true;
     }
-
+    alert('login falha!');
     return false;
   }
 

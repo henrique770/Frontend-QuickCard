@@ -1,86 +1,83 @@
-const headers = {
-  headers: {
-    Authorization: 'Bear _TOKEN_',
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-  method: '',
-  body: {},
+const tratarErroRequest = err => {
+  console.warn(err);
+  return err;
 };
 
-const headersGET = {
-  headers: {
-    Authorization: 'Bear _TOKEN_',
-    Accept: 'application/json',
-  },
-  method: 'GET',
+const tratarResponse = response => {
+  if (response.status == 204) {
+    console.warn(`Response 204 from url ${response.url}`);
+    return null;
+  }
+
+  if (response.status == 401) {
+    console.warn(`Response 401 from url ${response.url}`);
+    return null;
+  }
+
+  return response.json();
 };
 
 const getAuthorization = headerAuthorization => {
   const token = localStorage.getItem('token');
 
-  return headerAuthorization
-    .replace('undefined', token)
-    .replace('null', token)
-    .replace('_TOKEN_', token);
+  return headerAuthorization.replace('null', token).replace('_TOKEN_', token);
 };
 
-const erroInterno = err => {
-  if (err.ok) return err;
-
-  return err;
-};
-
-const erroNotAuthorization = err => {
-  console.log('Não autorizado!');
-  return err;
-};
-
-const tratarErroRequest = err => {
-  try {
-    console.warn(err);
-    const erros = [];
-    erros['500'] = erroInterno;
-    erros['401'] = erroNotAuthorization;
-
-    erros[err.status](err);
-  } catch (r) {
-    console.log(r);
-  }
-};
-
-const post = async function(url, body = {}) {
-  headers.method = 'POST';
-  headers.headers.Authorization = getAuthorization(
-    headers.headers.Authorization
-  );
-  headers.body = JSON.stringify(body);
-
-  return fetch(url, headers)
-    .then(result => result.json())
-    .catch(err => tratarErroRequest(err));
-};
-
-const get = async function(url) {
-  headersGET.headers.Authorization = getAuthorization(
-    headers.headers.Authorization
-  );
-
-  const heder = {
+const onPost = async function(url, body = {}) {
+  return fetch(url, {
     headers: {
-      Authorization: getAuthorization('Bear null'),
+      Authorization: getAuthorization('Bear _TOKEN_'),
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-  };
-
-  console.log(heder);
-
-  return fetch(url, heder)
-    .then(result => result.json())
+    method: 'POST',
+    body: JSON.stringify(body),
+  })
+    .then(result => tratarResponse(result))
     .catch(err => tratarErroRequest(err));
 };
 
-window.htppService = { post, get };
+const onGet = async function(url) {
+  return fetch(url, {
+    headers: {
+      Authorization: getAuthorization('Bearer _TOKEN_'),
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+  })
+    .then(result => tratarResponse(result))
+    .catch(err => tratarErroRequest(err));
+};
 
-module.exports = { post, get };
+const onPut = async function(url, body = {}) {
+  return fetch(url, {
+    headers: {
+      Authorization: getAuthorization('Bearer _TOKEN_'),
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'PUT',
+    body: JSON.stringify(body),
+  })
+    .then(result => tratarResponse(result))
+    .catch(err => tratarErroRequest(err));
+};
+
+const onDelete = async function(url, body = {}) {
+  return fetch(url, {
+    headers: {
+      Authorization: getAuthorization('Bearer _TOKEN_'),
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'DELETE',
+    body: JSON.stringify(body),
+  })
+    .then(result => tratarResponse(result))
+    .catch(err => tratarErroRequest(err));
+};
+
+window.httpService = { onPost, onGet, onPut, onDelete };
+
+module.exports = { onPost, onGet, onPut, onDelete };

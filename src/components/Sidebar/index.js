@@ -7,11 +7,16 @@ import {
   faPlus,
   faStickyNote,
   faAlignJustify,
+  faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { Container } from './styles';
 import logo from '~/assets/white_main_logo.svg';
 
 export default function SideBar() {
+  function handleLogout() {
+    localStorage.clear();
+  }
+
   return (
     <Container>
       <div className="page-wrapper chiller-theme toggled">
@@ -108,6 +113,14 @@ export default function SideBar() {
                       <FontAwesomeIcon icon={faAlignJustify} />
                     </div>
                     <span>Baralhos</span>
+                  </Link>
+                </li>
+                <li className="sidebar">
+                  <Link className="alignList" onClick={handleLogout} to="/">
+                    <div className="icon_format">
+                      <FontAwesomeIcon icon={faSignOutAlt} />
+                    </div>
+                    <span>Logout</span>
                   </Link>
                 </li>
               </ul>
