@@ -10,7 +10,7 @@ export default function BoxDeck({ decks }) {
         <Container>
           <div className="item grow1">
             <Jumbotron className="Jumbotron_height">
-              <h3>{item.titulo}</h3>
+              <h3>{item.nomeBloco}</h3>
               <div className="alignbottom linkbutton">
                 <Link to="/flashcard">
                   <div className="Button">Acessar</div>

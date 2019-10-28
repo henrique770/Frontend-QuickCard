@@ -10,7 +10,7 @@ import {
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { Container } from './styles';
-import logo from '~/assets/white_main_logo.svg';
+import logo from '../../assets/white_main_logo.svg';
 
 export default function SideBar() {
   function handleLogout() {

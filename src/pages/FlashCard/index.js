@@ -1,6 +1,6 @@
 import React from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import SideBar from '~/components/Sidebar';
+import SideBar from '../../components/Sidebar';
 
 import { Container } from './styles';
 

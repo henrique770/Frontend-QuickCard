@@ -1,6 +1,6 @@
 import React from 'react';
-import SideBar from '~/components/Sidebar';
-import BoxNotePad from '~/components/BoxNotepad';
+import SideBar from '../../components/Sidebar';
+import BoxNotePad from '../../components/BoxNotepad';
 import { Container } from './styles';
 
 export default function NotePads() {

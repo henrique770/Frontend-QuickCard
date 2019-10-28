@@ -1,41 +1,40 @@
-import React from 'react';
-import SideBar from '~/components/Sidebar';
-import BoxDeck from '~/components/BoxDeck';
+import React, { Component } from 'react';
+import SideBar from '../../components/Sidebar';
+import BoxDeck from '../../components/BoxDeck';
 import { Container } from './styles';
+import ServiceApi from '../../services/ApiService/api.service';
 
-export default function Decks() {
-  const decks = [
-    {
-      titulo: 'Bash / Terminal Linux',
-    },
-    {
-      titulo: 'Expressões em inglês / frases / palavras',
-    },
-    {
-      titulo: 'Palavras reservadas Linguagem C',
-    },
-    {
-      titulo: 'Ordenação em Estrutura de dados',
-    },
-  ];
-  return (
-    <>
-      <Container>
-        <div className="">
-          <SideBar />
-        </div>
+export default class Decks extends Component {
 
-        <div className=" containerside">
-          <div className="decks_style">
-            <div className="alignT">
-              <h1>Baralhos</h1>
-            </div>
-            <div className="row mt-4 mr-4 dflex">
-              <BoxDeck decks={decks} />
+  myDecks = []
+
+  getMyDecks = async => {
+    this.myDecks = ServiceApi.getBlocoCartao()
+  }
+
+  render() {
+
+    this.getMyDecks()
+
+    return (
+      <>
+        <Container>
+          <div className="">
+            <SideBar />
+          </div>
+
+          <div className=" containerside">
+            <div className="decks_style">
+              <div className="alignT">
+                <h1>Baralhos</h1>
+              </div>
+              <div className="row mt-4 mr-4 dflex">
+                <BoxDeck decks={this.myDecks} />
+              </div>
             </div>
           </div>
-        </div>
-      </Container>
-    </>
-  );
+        </Container>
+      </>
+    );
+  }
 }

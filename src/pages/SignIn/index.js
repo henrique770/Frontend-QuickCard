@@ -3,11 +3,12 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
-import EstudanteService from '~/services/estudante.service';
+import EstudanteService from '../../services/estudante.service';
+import ServiceApi from '../../services/ApiService/api.service';
 
 // import { signInRequest } from '~/store/modules/auth/actions';
 
-import logo from '~/assets/logo_quickcard.svg';
+import logo from '../../assets/logo_quickcard.svg';
 import RouteWrapper from '../../routes/Route';
 
 const schema = Yup.object().shape({
@@ -31,14 +32,14 @@ export default function SignIn() {
   // }
 
   async function handleSubmit(data) {
-    console.log('passando aqui');
 
-    const result = await EstudanteService.login(data.username, data.password);
+    const result = await ServiceApi.login(data.username, data.password);
 
     if (result) {
       window.location.reload();
       return true;
     }
+    
     alert('login falha!');
     return false;
   }

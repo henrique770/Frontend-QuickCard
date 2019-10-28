@@ -1,6 +1,6 @@
 import React from 'react';
-import SideBar from '~/components/Sidebar';
-import Editor from '~/components/Editor';
+import SideBar from '../../components/Sidebar';
+import Editor from '../../components/Editor';
 import { Container } from './styles';
 
 export default function AddNote() {
