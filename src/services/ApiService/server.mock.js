@@ -1,148 +1,132 @@
-
 const uuidv1 = require('uuid/v1');
-const dbMock = require('./MockDAO')
+const dbMock = require('./MockDAO');
 
 class ServiceApi {
+  constructor() {
+    console.log('Init service mock');
+    if (this.getDAO() == null) {
+      localStorage.setItem('dbMock', JSON.stringify(dbMock.default));
+    }
+  }
 
-    constructor() {
-        console.log('Init service mock')
-        if(this.getDAO() == null){
+  /**
+   * Verificar se usuario esta valido
+   */
+  isAuthenticate = () => {
+    const user = localStorage.getItem('user');
 
-            localStorage.setItem('dbMock' , JSON.stringify(dbMock.default) )
-        }
+    if (user != null) {
+      return true;
     }
 
-    /**
-     * Verificar se usuario esta valido
-     */
-    isAuthenticate = () => {
-        const user = localStorage.getItem('user');
+    return false;
+  };
 
-        if (user != null) {
-            return true;
-        }
+  /**
+   * Recuperar dbDAO
+   */
+  getDAO = () => {
+    const dao = localStorage.getItem('dbMock');
 
-        return false;
-    };
+    return JSON.parse(dao);
+  };
 
-    /**
-     * Recuperar dbDAO 
-     */
-    getDAO = () => {
-        let dao = localStorage.getItem('dbMock');
+  getUserCorrent = () => JSON.parse(localStorage.getItem('user'));
 
-        return JSON.parse(dao);
+  updateUserCorrent = user =>
+    localStorage.setItem('user', JSON.stringify(user));
+
+  /**
+   * Atualizar um item do db
+   * @param item Estudante entity
+   */
+  updateDAO = estudante => {
+    let db = this.getDAO();
+
+    if (db == null) {
+      db = [];
+      db.push(estudante);
+    } else {
+      let itemBase = db.find(e => (e._id = estudante._id));
+      let indexITem = db.indexOf(itemBase);
+
+      db.slice(indexITem, 1);
+      db.push(estudante);
     }
 
-    getUserCorrent = () => JSON.parse(localStorage.getItem('user'))
-    updateUserCorrent = (user) => localStorage.setItem('user' , JSON.stringify(user))
+    localStorage.setItem('dbMock', JSON.stringify(db));
+  };
 
-    /**
-     * Atualizar um item do db 
-     * @param item Estudante entity 
-     */
-    updateDAO = (estudante) => {
-        
-        let db = this.getDAO()
+  /**
+   * Login na base
+   */
+  login = async (user, senha) => {
+    let base = this.getDAO();
 
-        if(db == null){
-            db = []
-            db.push(estudante)
-        }
-        else {
-            let itemBase = db.find( e => e._id = estudante._id)
-            let indexITem = db.indexOf( itemBase )
+    if (base != null) {
+      console.log(base);
 
-            db.slice(indexITem , 1)
-            db.push(estudante)
-        }
+      let users = [...base];
 
+      let userBase = users.find(e => e.email == user && e.senha == senha);
 
-        localStorage.setItem('dbMock' , JSON.stringify(db))
+      if (userBase) {
+        localStorage.setItem('token', userBase.jwttoken);
+        localStorage.setItem('user', JSON.stringify(userBase));
+        localStorage.setItem('userName', userBase.nome);
+
+        return true;
+      }
+      return false;
     }
-
-    /**
-     * Login na base
-     */
-    login = async (   user , senha ) => {
-
-        let base = this.getDAO()
-
-        if(base != null){
-
-            console.log(base)
-
-            let users = [...base]
-    
-            let userBase = users.find(e => e.email == user && e.senha == senha)
-    
-            if(userBase) {
-
-                localStorage.setItem('token', userBase.jwttoken);
-                localStorage.setItem('user', JSON.stringify(userBase));
-                localStorage.setItem('userName', userBase.nome);
-              
-                return true
-            }
-            return false
-        }
-        alert('Nenhum elemento na base')
-        return false
-    }
+    alert('Nenhum elemento na base');
+    return false;
+  };
 
   /**
    * @example estudanteModel : {
-    *   "email" : "string",
-    *   "nome" : "string",
-    *   "senha": "string"
-    * }
-    */
-    estudanteCreated = async (estudanteModel) => {
-        estudanteModel._id = uuidv1()
-        estudanteModel.valid = true
-        this.updateDAO(estudanteModel)
-        return estudanteModel
-    }
+   *   "email" : "string",
+   *   "nome" : "string",
+   *   "senha": "string"
+   * }
+   */
+  estudanteCreated = async estudanteModel => {
+    estudanteModel._id = uuidv1();
+    estudanteModel.valid = true;
+    this.updateDAO(estudanteModel);
+    return estudanteModel;
+  };
 
-    //#region BLOCO CARTAO | BARALHO
+  // #region BLOCO CARTAO | BARALHO
 
-    getBlocoCartao = async => {
+  getBlocoCartao = async => {
+    let userCorrent = this.getUserCorrent();
 
-        let userCorrent = this.getUserCorrent()
+    return userCorrent.blocoCartao;
+  };
 
-        return userCorrent.blocoCartao;
+  getBlocoCartaoById = () => {};
 
-    }
+  addBlocoCartao = async baralho => {
+    console.log('adicionado bloco cartao');
 
-    
-    getBlocoCartaoById = () => {
+    baralho._id = uuidv1();
+    baralho.valid = true;
 
-    }
+    let userCorrent = this.getUserCorrent();
 
+    if (userCorrent.blocoCartao == null) userCorrent.blocoCartao = [];
 
-    addBlocoCartao = async (baralho) => {
-        console.log('adicionado bloco cartao')
+    userCorrent.blocoCartao.push(baralho);
+    this.updateUserCorrent(userCorrent);
+    this.updateDAO(userCorrent);
 
-        baralho._id = uuidv1()
-        baralho.valid = true
+    return true;
+  };
 
-        let userCorrent = this.getUserCorrent()
+  // #endregion
 
-        if(userCorrent.blocoCartao == null)
-            userCorrent.blocoCartao = []
+  getEstudante = async idEstudante => {};
+}
 
-        userCorrent.blocoCartao.push(baralho);
-        this.updateUserCorrent(userCorrent)
-        this.updateDAO(userCorrent)
-
-        return true
-    }
-
-    //#endregion
-
-    getEstudante = async idEstudante => {
-
-    }
-} 
-
-export default ServiceApi
+export default ServiceApi;
