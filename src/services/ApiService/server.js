@@ -1,4 +1,4 @@
-import * as httpService from './httpService';
+import * as httpService from '..//httpService';
 
 class ServiceApi {
 
@@ -42,7 +42,7 @@ class ServiceApi {
         if (userToken) {
             localStorage.setItem('token', userToken.jwttoken);
             localStorage.setItem('user', JSON.stringify(userToken));
-            localStorage.setItem('userName', userBase.nome);
+            localStorage.setItem('userName', userToken.nome);
 
             return true;
         }
