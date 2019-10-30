@@ -1,29 +1,41 @@
 import React from 'react';
-import * as ReactQuill from 'react-quill';
+import EditorJS from '@editorjs/editorjs';
+import Header from '@editorjs/header';
+import List from '@editorjs/list';
+import Embed from '@editorjs/embed';
+import { Container } from './styles';;
 
-import { Container } from './styles';
+export default function Editor() {
+  const editor = new EditorJS({
+    holderId: 'editorjs',
 
-class MyComponent extends React.Component {
-    constructor(props) {   
-      super(props)
-      this.state = { text: "Mussum Ipsum, cacilds vidis litro abertis. Detraxit consequat et quo num tendi nada. Diuretics paradis num copo Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. num tem leite então bota uma pinga aí cumpadi! Admodum accumsan disputationi eu sit. Vide electram sadipscing et per Sapien in monti palavris qui num significa nadis i pareci latim.  Quem manda na minha terra sou euzis! Interagi no mé, cursus quis, vehicula ac nisi. Viva Forevis aptent taciti sociosqu ad litora torquent. é motivis de denguis. Viva Forevis aptent taciti sociosqu ad litora torquent. Quem num gosta di mé, boa gentis num é. " } // You can also pass a Quill Delta here
-      this.handleChange = this.handleChange.bind(this)
-    }
-  
-    handleChange(value) {
-      this.setState({ text: value })
-    }
-  
-    render() {
-      return (
-        <Container>
-        <div className="editor_style">
-        <ReactQuill theme="snow" value={this.state.text}
-                    onChange={this.handleChange} />
-        </div>                    
-        </Container>
-      )
-    }
-  }
-
-  export default MyComponent;
+    tools: {
+      header: {
+        class: Header,
+        inlineToolbar: ['link'],
+      },
+      list: {
+        class: List,
+        inlineToolbar: ['link', 'bold'],
+      },
+      embed: {
+        class: Embed,
+        inlineToolbar: false,
+        config: {
+          services: {
+            youtube: true,
+            coub: true,
+          },
+        },
+      },
+    },
+  });
+  return (
+    <Container>
+      <div className="row fixedtitle">
+        <h1>Hello editor.js</h1>
+      </div>
+      <div id="editorjs" />
+    </Container>
+  );
+}

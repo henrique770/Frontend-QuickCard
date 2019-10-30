@@ -73,5 +73,16 @@ export default createGlobalStyle`
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
+/* style editor */
+.ce-block__content {
+    position: relative;
+    max-width: 750px;
+    text-align: left;
+    margin: 0 50px;
+}
+.ce-toolbar__content {
+    max-width: 100vw;
+    margin-left: 50px;
+}
 
 `;
