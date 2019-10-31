@@ -84,5 +84,12 @@ export default createGlobalStyle`
     max-width: 100vw;
     margin-left: 50px;
 }
-
+/* embed */
+.embed-tool__content {
+    width: 700px !important;
+    height: 394px !important;
+  }
+  .ce-block__content {
+    max-width: 700px !important;
+  }
 `;

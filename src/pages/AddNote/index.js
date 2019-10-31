@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
@@ -56,10 +57,13 @@ export default function AddNote() {
           <div className="row mt-4 mr-4">
             <div className="col-md-12">
               {/* EDITOR */}
-              <h1>Hello editor.js</h1>
+              <h1 className="fixedtitle">Título da nota</h1>
               <div id="editorjs" />
-
-              <button className="Button">Salvar</button>
+              <div className="align_button">
+                <Button variant="primary" className="Button">
+                  Salvar
+                </Button>
+              </div>
             </div>
           </div>
         </div>
