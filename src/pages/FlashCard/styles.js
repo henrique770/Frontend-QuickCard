@@ -30,8 +30,11 @@ export const Container = styled.div`
   }
   .alignflexbutton {
     display: flex;
+    flex-direction: column;
+    align-items: center;
 
     justify-content: center;
+    margin-bottom: 200px;
   }
   #target {
     display: none;
@@ -39,5 +42,16 @@ export const Container = styled.div`
 
   .Hide {
     display: none;
+  }
+
+  .align_performace {
+    display: flex;
+    flex-direction: row;    
+    justify-content: center;
+  }
+
+  .item_performance {
+    width: 100px;
+    margin: 0 10px;
   }
 `;
