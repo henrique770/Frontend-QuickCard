@@ -26,7 +26,7 @@ export default function Routes() {
       <Route path="/adddeck" component={AddDeck} isPrivate />
       <Route path="/notepads" component={NotePads} isPrivate />
       <Route path="/decks" component={Decks} isPrivate />
-      <Route path="/flashcard" component={FlashCard} isPrivate />
+      <Route path="/flashcard/:id" component={FlashCard} isPrivate />
       <Route path="/perfil" component={Profile} isPrivate />
     </Switch>
   );
