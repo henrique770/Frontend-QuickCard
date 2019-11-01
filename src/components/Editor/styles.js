@@ -10,4 +10,22 @@ export const Container = styled.div`
     position: fixed;
     margin-right: 20px;
   }
+  h1 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .fixedtitle {
+    position: fixed;
+    margin-left: 10px;
+    border: solid #fd570e;
+    border-radius: 11px;
+    background: #fff;
+    padding: 5px;
+    z-index: 9;
+    margin-bottom: 20px;
+    top: 25px;
+  }
+  #editorjs {
+    background: #fff;
+    margin-top: 100px;
+  }
 `;
