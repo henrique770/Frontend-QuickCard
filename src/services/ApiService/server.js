@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import * as httpService from '..//httpService';
-=======
 import * as httpService from '../httpService';
->>>>>>> 73a83a211df102fefda7c16158988860ec386483
 
 class ServiceApi {
   pathBlocoCartao = 'blocoCartaoMemoria';
@@ -11,7 +7,6 @@ class ServiceApi {
 
   _host = 'http://186.213.213.162:8080';
 
-<<<<<<< HEAD
     /**
      * Verificar se usuario esta valido
      */
@@ -62,9 +57,6 @@ class ServiceApi {
     estudanteCreated = async (estudanteModel) => {
         return httpService.onPost(`${this._url}`, estudanteModel);
     }
-=======
-  _path = '/estudante';
->>>>>>> 73a83a211df102fefda7c16158988860ec386483
 
   _url = `${this._host}${this._path}`;
 
@@ -167,8 +159,4 @@ class ServiceApi {
   getEstudante = async idEstudante => {};
 }
 
-<<<<<<< HEAD
 export default ServiceApi
-=======
-export default ServiceApi;
->>>>>>> 73a83a211df102fefda7c16158988860ec386483
