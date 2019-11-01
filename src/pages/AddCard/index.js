@@ -11,25 +11,24 @@ export default function AddCard() {
           <SideBar />
         </div>
 
-        <div className=" containerside">
+        <div className="containerside ov_hidden">
           <div className="alignT">
-            <h1>Adicionar cartão</h1>
+            <h1 className="fixedtitle">Adicionar cartão</h1>
           </div>
           <div className="row mt-4 mr-4">
             <div className="format_form">
               <Form>
                 <Form.Group>
-                  <Form.Control
-                    type="text"
-                    placeholder="Digite o nome do Baralho"
-                  />
+                  <div className="text-left labeltext">Baralho</div>
+                  <Form.Control type="text" />
                 </Form.Group>
-
+                <div className="text-left labeltext">Frente</div>
                 <Form.Group>
-                  <Form.Control type="text" placeholder="Frente" />
+                  <Form.Control type="text" />
                 </Form.Group>
+                <div className="text-left labeltext">Verso</div>
                 <Form.Group>
-                  <Form.Control type="text" placeholder="Verso" />
+                  <Form.Control type="text" />
                 </Form.Group>
 
                 <Button className="Button" variant="primary" type="submit">

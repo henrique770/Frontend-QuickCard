@@ -92,4 +92,35 @@ export default createGlobalStyle`
   .ce-block__content {
     max-width: 700px !important;
   }
+  /* label */
+
+  .labeltext {
+    font-size: 18px;
+    font-weight: bold;
+    color: #414141;
+    margin-bottom: 10px;
+  }
+
+
+  /* focus boostrap */
+
+    textarea:focus,
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="datetime"]:focus,
+    input[type="datetime-local"]:focus,
+    input[type="date"]:focus,
+    input[type="month"]:focus,
+    input[type="time"]:focus,
+    input[type="week"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus,
+    input[type="url"]:focus,
+    input[type="search"]:focus,
+    input[type="tel"]:focus,
+    input[type="color"]:focus,
+    .uneditable-input:focus {
+    border-color: #fe650e;
+    box-shadow: none;
+    outline: 0 none;
 `;

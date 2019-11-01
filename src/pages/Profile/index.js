@@ -11,35 +11,47 @@ export default function Profile() {
           <SideBar />
         </div>
 
-        <div className=" containerside">
+        <div className="containerside ov_hidden">
           <div className="alignT">
-            <h1>Perfil</h1>
+            <h1 className="fixedtitle">Perfil</h1>
           </div>
           <div className="row mt-4 mr-4">
             <div className="format_form">
               <Form>
+                <div className="text-left labeltext">Nome Completo</div>
                 <Form.Group>
-                  <Form.Control type="text" placeholder="Nome completo" />
+                  <Form.Control type="text" placeholder="" />
+                </Form.Group>
+                <div className="text-left labeltext">Email</div>
+                <Form.Group>
+                  <Form.Control type="email" placeholder="" />
+                </Form.Group>
+                <div className="text-left labeltext">Senha atual</div>
+                <Form.Group>
+                  <Form.Control type="password" placeholder="" />
+                </Form.Group>
+                <div className="text-left labeltext">Nova senha</div>
+                <Form.Group>
+                  <Form.Control type="password" placeholder="" />
                 </Form.Group>
                 <Form.Group>
-                  <Form.Control type="email" placeholder="Email" />
+                  <div className="text-left labeltext">Confirmar senha</div>
+                  <Form.Control type="password" placeholder="" />
                 </Form.Group>
 
-                <Form.Group>
-                  <Form.Control type="password" placeholder="Sua senha atual" />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Control type="password" placeholder="Nova senha" />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Control
-                    type="password"
-                    placeholder="Confirmação de senha"
-                  />
-                </Form.Group>
-
-                <Button className="Button" variant="primary" type="submit">
-                  Salvar
+                <Button
+                  className="ButtonUpdate"
+                  variant="primary"
+                  type="submit"
+                >
+                  Atualizar perfil
+                </Button>
+                <Button
+                  className="ButtonDelete"
+                  variant="primary"
+                  type="submit"
+                >
+                  Deletar conta
                 </Button>
               </Form>
             </div>
