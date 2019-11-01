@@ -323,4 +323,8 @@ export const Container = styled.div`
   .card-body {
     padding: 0.25rem !important;
   }
+  .align_bottom {
+    position: absolute;
+    bottom: 0;
+  }
 `;

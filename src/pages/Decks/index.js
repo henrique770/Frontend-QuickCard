@@ -28,9 +28,9 @@ export default function Decks() {
         <div className=" containerside">
           <div className="decks_style">
             <div className="alignT">
-              <h1>Baralhos</h1>
+              <h1 className="fixedtitle">Baralhos</h1>
             </div>
-            <div className="row mt-4 mr-4 dflex">
+            <div className="row mt130 mr-4 dflex">
               <BoxDeck decks={decks} />
             </div>
           </div>

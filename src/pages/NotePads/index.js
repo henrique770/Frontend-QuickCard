@@ -21,9 +21,9 @@ export default function NotePads() {
         <div className=" containerside">
           <div className="notepads_style">
             <div className=" alignT">
-              <h1>Blocos de anotações</h1>
+              <h1 className="fixedtitle">Blocos de anotações</h1>
             </div>
-            <div className="row mt-4 mr-4 dflex">
+            <div className="row mt130 mr-4 dflex">
               <BoxNotePad decks={decks} />
             </div>
           </div>

@@ -41,15 +41,4 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
   }
-  .fixedtitle {
-    position: fixed;
-    margin-left: 10px;
-    border: solid #fd570e;
-    border-radius: 11px;
-    background: #fff;
-    padding: 5px;
-    z-index: 9;
-    margin-bottom: 20px;
-    top: 25px;
-  }
 `;
