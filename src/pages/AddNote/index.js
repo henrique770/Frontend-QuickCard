@@ -34,17 +34,17 @@ export default function AddNote() {
     },
   });
 
-  const saveBtn = document.querySelector('button');
-  saveBtn.addEventListener('click', function() {
-    editor
-      .save()
-      .then(outputData => {
-        console.log('Article data:', outputData);
-      })
-      .catch(error => {
-        console.log('Saving failed: ', error);
-      });
-  });
+  // const saveBtn = document.querySelector('button');
+  // saveBtn.addEventListener('click', function() {
+  //   editor
+  //     .save()
+  //     .then(outputData => {
+  //       console.log('Article data:', outputData);
+  //     })
+  //     .catch(error => {
+  //       console.log('Saving failed: ', error);
+  //     });
+  // });
 
   return (
     <>
