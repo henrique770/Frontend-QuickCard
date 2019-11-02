@@ -19,10 +19,13 @@ export const Container = styled.div`
     font-weight: bold;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     width: 100px;
     border: 0;
     border-radius: 4px;
+  }
+  .Button_padding {
+    padding: 10px;
   }
 
   .Button:hover {
@@ -46,12 +49,13 @@ export const Container = styled.div`
 
   .align_performace {
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;
     justify-content: center;
   }
 
   .item_performance {
     width: 100px;
     margin: 0 10px;
+    font-weight: bold;
   }
 `;
