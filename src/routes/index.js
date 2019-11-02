@@ -12,6 +12,7 @@ import AddDeck from '../pages/AddDeck';
 import NotePads from '../pages/NotePads';
 import Decks from '../pages/Decks';
 import FlashCard from '../pages/FlashCard';
+import EditCard from '../pages/EditCard';
 import Profile from '../pages/Profile';
 
 export default function Routes() {
@@ -27,6 +28,7 @@ export default function Routes() {
       <Route path="/notepads" component={NotePads} isPrivate />
       <Route path="/decks" component={Decks} isPrivate />
       <Route path="/flashcard" component={FlashCard} isPrivate />
+      <Route path="/editcard" component={EditCard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
     </Switch>
   );
