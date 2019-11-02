@@ -18,10 +18,7 @@ export default function EditCard() {
           <div className="row mt-4 mr-4">
             <div className="format_form">
               <Form>
-                <Form.Group>
-                  <div className="text-left labeltext">Baralho</div>
-                  <Form.Control type="text" />
-                </Form.Group>
+
                 <div className="text-left labeltext">Frente</div>
                 <Form.Group>
                   <Form.Control type="text" />
