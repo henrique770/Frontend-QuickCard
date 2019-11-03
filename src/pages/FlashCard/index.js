@@ -1,19 +1,23 @@
-import React, { Component, useState, useEffect } from 'react';
-import { Route, useParams } from "react-router-dom";
+import React, { useState , useEffect } from 'react';
+import { Button, Fade } from 'reactstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import SideBar from '../../components/Sidebar';
+import { Link } from 'react-router-dom';
+import SideBar from '~/components/Sidebar';
+import { Route, useParams } from "react-router-dom";
 import ServiceApi from '../../services/ApiService/api.service';
 
 import { Container } from './styles';
 
-export default function FlashCard() {
+const FlashCard = props => {
 
   let urlParams = useParams()
   let [cartao, setCartao] = useState({})
 
+  const [fadeIn, setFadeIn] = useState(true);
+  const toggle = () => setFadeIn(!fadeIn);
 
   let getFlashCardinBlock = async () => {
-    return ServiceApi.getCartao(urlParams.id);
+    return ServiceApi.getCartao(urlParams.id)
   }
 
    useEffect( () => {
@@ -25,63 +29,75 @@ export default function FlashCard() {
       getDateCartao()
    } , [])
 
-  let body = () => {
 
-    return (
-      <>
-        <Container>
+  return (
+    <>
+      <Container>
+        <div className="">
           <SideBar />
-          <div className=" containerside">
-            <div className="alignT">
-              <h1>{cartao.nomeBloco}</h1>
-            </div>
-            <div className="row mt-4 mr-4 dflex" />
-            <div className="container">
-              <Jumbotron fluid>
-                <div className="container">
-                  <h1 className="display-4">{cartao.frenteCartao}</h1>
-                </div>
-              </Jumbotron>
-              <div className="alignflexbutton">
-                <div className="Button Show">Mostrar</div>
+        </div>
+
+        <div className=" containerside">
+          <div className="alignT">
+            <h1 className="fixedtitle">{cartao.nomeBloco}</h1>
+          </div>
+          <div className="row mt130 mr-4 dflex" />
+          <div className="container">
+            <Link to="/editcard">
+              <Button className="btn-secondary font-weight-bold Button_padding mb-4">
+                Editar
+              </Button>
+            </Link>
+            <Jumbotron fluid>
+              <div className="container">
+                <h1 className="display-4">
+                  {cartao.frenteCartao}
+                </h1>
               </div>
+            </Jumbotron>
+            <div className="alignflexbutton">
 
-              <Jumbotron id="target" fluid className="mt-4">
-                <div className="container">
-                  <h1 className="display-4">
-                    {cartao.versoCartao}
-                  </h1>
+              <Button className="Button btn btn-primary Show" onClick={toggle}>
+                Mostrar
+              </Button>
+
+              <Fade in={fadeIn} tag="h5" className="mt-3">
+                <div id="target">
+
+                  <Jumbotron fluid className="mt-4">
+                    <div className="container">
+                      <h1 className="display-4">
+                        {cartao.versoCartao}
+                      </h1>
+                    </div>
+                  </Jumbotron>
+
+                  <div className="align_performace">
+
+                    <Button className="btn-secondary item_performance"
+                      onClick={() => { ServiceApi.atualizarCartaoDificil(urlParams.id, cartao) }}>
+                      Errei: 10 min.
+                    </Button>
+
+                    <Button className="Button item_performance"
+                      onClick={() => { ServiceApi.atualizarCartaoMedio(urlParams.id, cartao, cartao.hMedio) }}>
+                      Bom : {cartao.hMedio} horas
+                    </Button>
+
+                    <Button className="btn-secondary item_performance"
+                      onClick={() => { ServiceApi.atualizarCartaoFacil(urlParams.id, cartao, cartao.hFacil) }}>
+                      Fácil : {cartao.hFacil} hora
+                    </Button>
+
+                  </div>
                 </div>
-
-                <hr />
-
-                <section className='row'>
-                  <section className='col d-flex justify-content-center'>
-                    <button className="btn btn-primary" onClick={() => { ServiceApi.atualizarCartaoDificil(urlParams.id, cartao) }}>
-                      Difícil : 10 min
-                    </button>
-                  </section>
-                  <section className='col d-flex justify-content-center'>
-                    <button className="btn btn-primary" onClick={() => { ServiceApi.atualizarCartaoMedio(urlParams.id, cartao, cartao.hMedio) }} >
-                      Médio : {cartao.hMedio} horas
-                      </button>
-                  </section>
-                  <section className='col d-flex justify-content-center'>
-                    <button className="btn btn-primary" onClick={() => { ServiceApi.atualizarCartaoFacil(urlParams.id, cartao, cartao.hFacil) }}>
-                      fácil : {cartao.hFacil} hora
-                    </button>
-                  </section>
-                </section>
-
-              </Jumbotron>
-
+              </Fade>
             </div>
           </div>
-        </Container>
-      </>
-    );
-  }
+        </div>
+      </Container>
+    </>
+  );
+};
 
-  return body();
-}
-
+export default FlashCard;

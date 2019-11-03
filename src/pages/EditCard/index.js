@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import SideBar from '../../components/Sidebar';
+import SideBar from '~/components/Sidebar';
 import { Container } from './styles';
 
-export default function AddCard() {
+export default function EditCard() {
   return (
     <>
       <Container>
@@ -13,15 +13,12 @@ export default function AddCard() {
 
         <div className="containerside ov_hidden">
           <div className="alignT">
-            <h1 className="fixedtitle">Adicionar cartão</h1>
+            <h1 className="fixedtitle">Editar cartão</h1>
           </div>
           <div className="row mt-4 mr-4">
             <div className="format_form">
               <Form>
-                <Form.Group>
-                  <div className="text-left labeltext">Baralho</div>
-                  <Form.Control type="text" />
-                </Form.Group>
+
                 <div className="text-left labeltext">Frente</div>
                 <Form.Group>
                   <Form.Control type="text" />

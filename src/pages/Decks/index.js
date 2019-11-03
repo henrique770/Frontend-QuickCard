@@ -28,7 +28,7 @@ export default class Decks extends Component {
               <div className="alignT">
                 <h1>Baralhos</h1>
               </div>
-              <div className="row mt-4 mr-4 dflex">
+              <div className="row mt130 mr-4 dflex">
                 <BoxDeck decks={this.myDecks} />
               </div>
             </div>

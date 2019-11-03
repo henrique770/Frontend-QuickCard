@@ -8,6 +8,7 @@ import {
   faStickyNote,
   faAlignJustify,
   faSignOutAlt,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { Container } from './styles';
 import logo from '../../assets/white_main_logo.svg';
@@ -116,13 +117,23 @@ export default function SideBar() {
                   </Link>
                 </li>
                 <li className="sidebar">
-                  <Link className="alignList" onClick={handleLogout} to="/">
+                  <Link className="alignList" to="/profile">
                     <div className="icon_format">
-                      <FontAwesomeIcon icon={faSignOutAlt} />
+                      <FontAwesomeIcon icon={faUser} />
                     </div>
-                    <span>Logout</span>
+                    <span>Perfil</span>
                   </Link>
                 </li>
+                <div className="align_bottom">
+                  <li className="sidebar">
+                    <Link className="alignList" onClick={handleLogout} to="/">
+                      <div className="icon_format">
+                        <FontAwesomeIcon icon={faSignOutAlt} />
+                      </div>
+                      <span>Logout</span>
+                    </Link>
+                  </li>
+                </div>
               </ul>
             </div>
           </div>
