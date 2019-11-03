@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
-import EstudanteService from '~/services/estudante.service';
+import EstudanteService from '../../services/estudante.service';
+import ServiceApi from '../../services/ApiService/api.service';
 
-import logo from '~/assets/logo_quickcard.svg';
+import logo from '../../assets/logo_quickcard.svg';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
@@ -18,14 +19,15 @@ const schema = Yup.object().shape({
 
 export default function SignUp() {
   async function handleSubmit(data) {
-    const user = await EstudanteService.estudanteCreated({
+
+    const user = await ServiceApi.estudanteCreated({
       nome: data.name,
       email: data.email,
       senha: data.password,
     });
 
     if (user.valid) {
-      window.location.reload();
+      window.location.href = './';
       return;
     }
 

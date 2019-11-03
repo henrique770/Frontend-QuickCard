@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import SideBar from '~/components/Sidebar';
+import SideBar from '../../components/Sidebar';
 import { Container } from './styles';
 
 export default function AddCard() {

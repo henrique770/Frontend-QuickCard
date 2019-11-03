@@ -1,15 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { Button, Fade } from 'reactstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { Link } from 'react-router-dom';
 import SideBar from '~/components/Sidebar';
+import { Route, useParams } from "react-router-dom";
+import ServiceApi from '../../services/ApiService/api.service';
 
 import { Container } from './styles';
 
 const FlashCard = props => {
-  const [fadeIn, setFadeIn] = useState(true);
 
+  let urlParams = useParams()
+  let [cartao, setCartao] = useState({})
+
+  const [fadeIn, setFadeIn] = useState(true);
   const toggle = () => setFadeIn(!fadeIn);
+
+  let getFlashCardinBlock = async () => {
+    return ServiceApi.getCartao(urlParams.id)
+  }
+
+   useEffect( () => {
+      const getDateCartao = async () => {
+        let date = await getFlashCardinBlock()
+        setCartao(date)
+      }
+
+      getDateCartao()
+   } , [])
+
+
   return (
     <>
       <Container>
@@ -19,7 +39,7 @@ const FlashCard = props => {
 
         <div className=" containerside">
           <div className="alignT">
-            <h1 className="fixedtitle">Nome baralho</h1>
+            <h1 className="fixedtitle">{cartao.nomeBloco}</h1>
           </div>
           <div className="row mt130 mr-4 dflex" />
           <div className="container">
@@ -30,31 +50,45 @@ const FlashCard = props => {
             </Link>
             <Jumbotron fluid>
               <div className="container">
-                <h1 className="display-4">Oque faz o comando: yppasswd?</h1>
+                <h1 className="display-4">
+                  {cartao.frenteCartao}
+                </h1>
               </div>
             </Jumbotron>
             <div className="alignflexbutton">
+
               <Button className="Button btn btn-primary Show" onClick={toggle}>
                 Mostrar
               </Button>
+
               <Fade in={fadeIn} tag="h5" className="mt-3">
                 <div id="target">
+
                   <Jumbotron fluid className="mt-4">
                     <div className="container">
                       <h1 className="display-4">
-                        Muda a password(senha) do nosso utilizador nas páginas
-                        amarelas (yellow pages)
+                        {cartao.versoCartao}
                       </h1>
                     </div>
                   </Jumbotron>
+
                   <div className="align_performace">
-                    <Button className="btn-secondary item_performance">
-                      Errei
+
+                    <Button className="btn-secondary item_performance"
+                      onClick={() => { ServiceApi.atualizarCartaoDificil(urlParams.id, cartao) }}>
+                      Errei: 10 min.
                     </Button>
-                    <Button className="Button item_performance">Bom</Button>
-                    <Button className="btn-secondary item_performance">
-                      Fácil
+
+                    <Button className="Button item_performance"
+                      onClick={() => { ServiceApi.atualizarCartaoMedio(urlParams.id, cartao, cartao.hMedio) }}>
+                      Bom : {cartao.hMedio} horas
                     </Button>
+
+                    <Button className="btn-secondary item_performance"
+                      onClick={() => { ServiceApi.atualizarCartaoFacil(urlParams.id, cartao, cartao.hFacil) }}>
+                      Fácil : {cartao.hFacil} hora
+                    </Button>
+
                   </div>
                 </div>
               </Fade>
