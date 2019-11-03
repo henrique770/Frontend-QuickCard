@@ -39,13 +39,6 @@ export const Container = styled.div`
     justify-content: center;
     margin-bottom: 200px;
   }
-  #target {
-    display: none;
-  }
-
-  .Hide {
-    display: none;
-  }
 
   .align_performace {
     display: flex;
