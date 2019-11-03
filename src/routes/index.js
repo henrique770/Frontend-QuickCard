@@ -28,8 +28,8 @@ export default function Routes() {
       <Route path="/notepads"       component={NotePads} isPrivate />
       <Route path="/decks"          component={Decks} isPrivate />
       <Route path="/flashcard/:id"  component={FlashCard} isPrivate />
-      <Route path="/editcard"       component={EditCard} isPrivate />
-      <Route path="/profile"        omponent={Profile} isPrivate />
+      <Route path="/editcard/:idBloco/:idCard"   component={EditCard} isPrivate />
+      <Route path="/profile"        component={Profile} isPrivate />
     </Switch>
   );
 }

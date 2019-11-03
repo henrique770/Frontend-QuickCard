@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Fade } from 'reactstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { Link } from 'react-router-dom';
@@ -13,6 +13,7 @@ const FlashCard = props => {
   let urlParams = useParams()
   let [cartao, setCartao] = useState({})
 
+
   const [fadeIn, setFadeIn] = useState(true);
   const toggle = () => setFadeIn(!fadeIn);
 
@@ -20,14 +21,14 @@ const FlashCard = props => {
     return ServiceApi.getCartao(urlParams.id)
   }
 
-   useEffect( () => {
-      const getDateCartao = async () => {
-        let date = await getFlashCardinBlock()
-        setCartao(date)
-      }
+  useEffect(() => {
+    const getDateCartao = async () => {
+      let date = await getFlashCardinBlock()
+      setCartao(date)
+    }
 
-      getDateCartao()
-   } , [])
+    getDateCartao()
+  }, [])
 
 
   return (
@@ -43,7 +44,7 @@ const FlashCard = props => {
           </div>
           <div className="row mt130 mr-4 dflex" />
           <div className="container">
-            <Link to="/editcard">
+            <Link to={`/editcard/${urlParams.id}/${cartao._id}`}>
               <Button className="btn-secondary font-weight-bold Button_padding mb-4">
                 Editar
               </Button>
@@ -57,11 +58,37 @@ const FlashCard = props => {
             </Jumbotron>
             <div className="alignflexbutton">
 
-              <Button className="Button btn btn-primary Show" onClick={toggle}>
-                Mostrar
-              </Button>
+              <section className="row">
+                <section className="col">
+                  <Button className="Button btn btn-primary Show"
+                    onClick={() => {
+                      let element = document.getElementById('target')
+                      element.hidden = false
+                    }}>
+                    Mostrar
+                  </Button>
+                </section>
 
-              <Fade in={fadeIn} tag="h5" className="mt-3">
+                <section className="col">
+                  <Button className="Button btn btn-primary"
+                    onClick={() => {
+                      const getDateCartao = async () => {
+                        let date = await getFlashCardinBlock()
+                        setCartao(date)
+                      }
+
+                      getDateCartao()
+                    }}>
+                    Próximo
+                   </Button>
+                </section>
+              </section>
+
+
+
+
+              <Fade in={fadeIn} tag="h5" className="mt-3 w-100">
+
                 <div id="target">
 
                   <Jumbotron fluid className="mt-4">

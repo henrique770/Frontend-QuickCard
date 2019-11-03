@@ -151,7 +151,14 @@ class ServiceApi {
   //#region
 
 
-  async getCartao(idBlocoCartao) {
+  getCartaoById = async (idBlocoCartao , idCartao) => {
+    let user = this.getUserCorrent()
+    let bloco = user.blocoCartao.find(e => e._id == idBlocoCartao)
+
+    return bloco.listBlocoCartao.find(e => e._id == idCartao)
+  }
+
+   getCartao = async idBlocoCartao => {
 
     let user = this.getUserCorrent()
     let bloco = user.blocoCartao.find(e => e._id == idBlocoCartao)

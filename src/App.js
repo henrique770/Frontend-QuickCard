@@ -9,18 +9,15 @@ import store from './store';
 import GlobalStyle from './styles/global';
 
 
-class App extends Component {
-
-  render() {
-    return (
-      <Provider store={store}>
-        <Router history={history}>
-          <Routes />
-          <GlobalStyle />
-        </Router>
-      </Provider>
-    );
-  }
+function App() {
+  return (
+    <Provider store={store}>
+      <Router history={history}>
+        <Routes />
+        <GlobalStyle />
+      </Router>
+    </Provider>
+  );
 }
 
 export default hot(App);
