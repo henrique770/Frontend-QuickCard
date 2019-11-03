@@ -1,14 +1,8 @@
 import React from 'react';
-<<<<<<< HEAD
-import SideBar from '../../components/Sidebar';
-import Notes from '../../components/Notes';
-import Editor from '../../components/Editor';
-=======
 import SideBar from '~/components/Sidebar';
 import Notes from '~/components/Notes';
 import Editor from '~/components/Editor';
 import TopBar from '~/components/TopBar';
->>>>>>> 5325c3b6438cc35234d29b13134346435d2be3eb
 import { Container } from './styles';
 
 export default function Dashboard() {

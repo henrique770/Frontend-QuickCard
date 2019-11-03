@@ -62,11 +62,7 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-=======
     "@editorjs/paragraph": "^2.6.0",
->>>>>>> 5325c3b6438cc35234d29b13134346435d2be3eb
     "babel-eslint": "^10.0.3",
     "babel-plugin-root-import": "^6.4.1",
     "customize-cra": "^0.8.0",

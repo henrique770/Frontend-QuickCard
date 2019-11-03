@@ -151,29 +151,111 @@ class ServiceApi {
   //#region
 
 
-  getCartao(idBlocoCartao) {
+  async getCartao(idBlocoCartao) {
 
     let user = this.getUserCorrent()
     let bloco = user.blocoCartao.find(e => e._id == idBlocoCartao)
 
     let listaOrdernada = this.ordernarCartaoBaralho(bloco.listBlocoCartao)
 
-    let i =listaOrdernada.length > 7 ? 7 : listaOrdernada.length
+    let i = listaOrdernada.length > 7 ? 7 : listaOrdernada.length
 
     let iRandom = Math.floor(Math.random() * i)
     let cartao = listaOrdernada[iRandom]
 
     cartao.nomeBloco = bloco.nomeBloco
+
+    return this.calcularHorasCartao(cartao)
+  }
+
+  pesoFacil = 5
+  pesoMedio = 2
+  pesoDificil = -1
+
+  calcularHorasCartao(cartao) {
+
+    let a = cartao.acertoFacil
+    let b = cartao.acertoMedio
+    let c = cartao.acertoDificil
+
+    let media = (a * this.pesoFacil) + (b * this.pesoMedio + c * this.pesoDificil)
+
+    cartao.hFacil = (media * this.pesoFacil)
+    cartao.hMedio = (media * this.pesoMedio)
+
     return cartao
   }
 
-  ordernarCartaoBaralho(listBlocoCartao) {
-    return listBlocoCartao.sort(( a , b ) => {
-        let aDate = new Date(`${a.dataVisualizacao} ${a.timeVisualizacao}`).getTime()
-        let bDate = new Date(`${b.dataVisualizacao} ${b.timeVisualizacao}`).getTime()
 
-        return aDate > bDate ? 1 : -1
-     })
+  atualizarCartaoDificil = async (idBloco, cartao) => {
+    let date = new Date()
+    date.setMinutes(10)
+
+    cartao.dataVisualizacao = `${date.getDay()}/${date.getMonth() + 1}/${date.getFullYear()}`
+    cartao.timeVisualizacao = `${date.getHours()}:${date.getMinutes()}`
+
+    this.updateCartao(idBloco, cartao)
+  }
+
+  atualizarCartaoMedio = async (idBloco, cartao, horaProximaVisualizacao) => {
+
+    cartao.acertoMedio += 1;
+
+    this.atualizarCartaoMedioCommom(idBloco , cartao , horaProximaVisualizacao)
+  }
+
+  atualizarCartaoFacil = (idBloco, cartao, horaProximaVisualizacao) => {
+
+    cartao.acertoFacil += 1;
+
+    this.atualizarCartaoMedioCommom(idBloco , cartao , horaProximaVisualizacao)
+  }
+
+  atualizarCartaoMedioCommom = async (idBloco, cartao, horaProximaVisualizacao) => {
+
+    let date = new Date(`${cartao.dataVisualizacao} ${cartao.timeVisualizacao}`)
+
+    date.setHours(horaProximaVisualizacao)
+
+    cartao.dataVisualizacao = `${date.getDay()}/${date.getMonth() + 1}/${date.getFullYear()}`
+    cartao.timeVisualizacao = `${date.getHours()}:${date.getMinutes()}`
+
+    this.updateCartao(idBloco, cartao)
+  }
+
+   updateCartao = async (idbloco, cartao) => {
+
+    let user = this.getUserCorrent()
+    let bloco = user.blocoCartao.find(e => e._id == idbloco)
+    // atualizar cartao
+    bloco.listBlocoCartao = bloco.listBlocoCartao.map(c => {
+      if (c._id != cartao._id) {
+        return c
+      }
+      else if (c._id == cartao._id) {
+        return cartao
+      }
+    })
+    // atulizar bloco cartao
+    user.blocoCartao = user.blocoCartao.map(bl => {
+      if (bl._id != bloco._id) {
+        return bl
+      }
+      else if (bl._id == bloco._id) {
+        return bloco
+      }
+    })
+
+    this.updateUserCorrent(user);
+  }
+
+  ordernarCartaoBaralho(listBlocoCartao) {
+    return listBlocoCartao.sort((a, b) => {
+      let aDate = new Date(`${a.dataVisualizacao} ${a.timeVisualizacao}`).getTime()
+      let bDate = new Date(`${b.dataVisualizacao} ${b.timeVisualizacao}`).getTime()
+
+      return aDate > bDate ? 1 : -1
+    })
   }
 
   //#endregion

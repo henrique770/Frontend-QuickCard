@@ -1,15 +1,10 @@
 import React from 'react';
-<<<<<<< HEAD
-import SideBar from '../../components/Sidebar';
-import Editor from '../../components/Editor';
-=======
 import { Button } from 'react-bootstrap';
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
 import Embed from '@editorjs/embed';
 import SideBar from '~/components/Sidebar';
->>>>>>> 5325c3b6438cc35234d29b13134346435d2be3eb
 import { Container } from './styles';
 import TopBar from '../../components/TopBar';
 

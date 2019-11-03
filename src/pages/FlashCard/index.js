@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Route, useParams } from "react-router-dom";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import SideBar from '../../components/Sidebar';
@@ -8,29 +8,29 @@ import { Container } from './styles';
 
 export default function FlashCard() {
 
-
   let urlParams = useParams()
-  let cartao = {}
+  let [cartao, setCartao] = useState({})
 
-  let getFlashCardinBlock = () => {
-    console.log(urlParams)
 
-    cartao = ServiceApi.getCartao(urlParams.id)
-    console.log(cartao)
+  let getFlashCardinBlock = async () => {
+    return ServiceApi.getCartao(urlParams.id);
   }
 
+   useEffect( () => {
+      const getDateCartao = async () => {
+        let date = await getFlashCardinBlock()
+        setCartao(date)
+      }
 
-  function Render() {
+      getDateCartao()
+   } , [])
 
-    getFlashCardinBlock()
+  let body = () => {
 
     return (
       <>
         <Container>
-          <div className="">
-            <SideBar />
-          </div>
-
+          <SideBar />
           <div className=" containerside">
             <div className="alignT">
               <h1>{cartao.nomeBloco}</h1>
@@ -45,6 +45,7 @@ export default function FlashCard() {
               <div className="alignflexbutton">
                 <div className="Button Show">Mostrar</div>
               </div>
+
               <Jumbotron id="target" fluid className="mt-4">
                 <div className="container">
                   <h1 className="display-4">
@@ -52,17 +53,23 @@ export default function FlashCard() {
                   </h1>
                 </div>
 
-                <hr/>
+                <hr />
 
-                <section class='row'>
-                  <section class='col d-flex justify-content-center'>
-                    <button class="btn btn-primary">Dificil : 10 min</button>
+                <section className='row'>
+                  <section className='col d-flex justify-content-center'>
+                    <button className="btn btn-primary" onClick={() => { ServiceApi.atualizarCartaoDificil(urlParams.id, cartao) }}>
+                      Difícil : 10 min
+                    </button>
                   </section>
-                  <section class='col d-flex justify-content-center'>
-                    <button class="btn btn-primary">Normal : 12 horas</button>
+                  <section className='col d-flex justify-content-center'>
+                    <button className="btn btn-primary" onClick={() => { ServiceApi.atualizarCartaoMedio(urlParams.id, cartao, cartao.hMedio) }} >
+                      Médio : {cartao.hMedio} horas
+                      </button>
                   </section>
-                  <section class='col d-flex justify-content-center'>
-                    <button class="btn btn-primary">Dificil : 1 dia</button>
+                  <section className='col d-flex justify-content-center'>
+                    <button className="btn btn-primary" onClick={() => { ServiceApi.atualizarCartaoFacil(urlParams.id, cartao, cartao.hFacil) }}>
+                      fácil : {cartao.hFacil} hora
+                    </button>
                   </section>
                 </section>
 
@@ -73,9 +80,8 @@ export default function FlashCard() {
         </Container>
       </>
     );
-
   }
 
-  return Render();
-
+  return body();
 }
+
