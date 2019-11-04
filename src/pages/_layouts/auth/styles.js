@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   /* background: linear-gradient(-90deg, #f93b10, #fe650e); */
   background: #fe650e;
   background-image: linear-gradient(-90deg, #fe650eb8, #f93b108c),
-    url(/static/media/background.d87efe82.jpg);
+    url(${background});
   display: flex;
   background-blend-mode: multiply;
   background-size: cover;
