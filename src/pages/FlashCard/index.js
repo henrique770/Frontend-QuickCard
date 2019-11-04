@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Fade } from 'reactstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { Link } from 'react-router-dom';
-import SideBar from '~/components/Sidebar';
+import SideBar from './../../components/Sidebar';
 import { Route, useParams } from "react-router-dom";
 import ServiceApi from '../../services/ApiService/api.service';
 
@@ -11,7 +11,7 @@ import { Container } from './styles';
 const FlashCard = props => {
 
   let urlParams = useParams()
-  let [cartao, setCartao] = useState({})
+  let [cartao, setCartao] = useState(null)
 
 
   const [fadeIn, setFadeIn] = useState(true);
@@ -30,6 +30,24 @@ const FlashCard = props => {
     getDateCartao()
   }, [])
 
+
+  if(cartao == null){
+    return (<>
+      <Container>
+        <div className="">
+          <SideBar />
+        </div>
+
+        <div className=" containerside">
+          <div className="alignT">
+            <h1 className="fixedtitle">Buscando cartao...</h1>
+          </div>
+          
+        </div>
+      </Container>
+    </>
+  );
+  }
 
   return (
     <>
@@ -63,7 +81,7 @@ const FlashCard = props => {
                   <Button className="Button btn btn-primary Show"
                     onClick={() => {
                       let element = document.getElementById('target')
-                      element.hidden = false
+                      element.setAttribute('class' , '')
                     }}>
                     Mostrar
                   </Button>
@@ -84,12 +102,9 @@ const FlashCard = props => {
                 </section>
               </section>
 
-
-
-
               <Fade in={fadeIn} tag="h5" className="mt-3 w-100">
 
-                <div id="target">
+                <div id="target" className="Hide">
 
                   <Jumbotron fluid className="mt-4">
                     <div className="container">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import SideBar from '~/components/Sidebar';
+import SideBar from './../../components/Sidebar';
 import { Route, useParams , Redirect} from "react-router-dom";
 import { Container } from './styles';
 import ServiceApi from '../../services/ApiService/api.service';

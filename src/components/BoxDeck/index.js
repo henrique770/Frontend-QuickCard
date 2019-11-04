@@ -13,8 +13,13 @@ export default function BoxDeck({ decks }) {
             <Jumbotron className="Jumbotron_height">
               <h3>{item.nomeBloco}</h3>
               <div className="alignbottom linkbutton">
-                <Link to={`/flashcard/${item._id}`} >
-                  <div className="Button">Acessar {item._id}</div>
+            
+                <Link to={`/addcard/${item.id}?namecard=${item.nomeBloco}`} >
+                  <div className="Button mt-2">Adiconar cartção</div>
+                </Link>
+                
+                <Link to={`/flashcard/${item.id}`} >
+                  <div className="Button mt-2">Acessar</div>
                 </Link>
               </div>
             </Jumbotron>

@@ -4,7 +4,7 @@ import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
 import Embed from '@editorjs/embed';
-import SideBar from '~/components/Sidebar';
+import SideBar from './../../components/Sidebar';
 import { Container } from './styles';
 import TopBar from '../../components/TopBar';
 

@@ -26,7 +26,20 @@ const getAuthorization = headerAuthorization => {
 const onPost = async function(url, body = {}) {
   return fetch(url, {
     headers: {
-      Authorization: getAuthorization('Bear _TOKEN_'),
+      Authorization: getAuthorization('Bearer _TOKEN_'),
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(body),
+  })
+    .then(result => tratarResponse(result))
+    .catch(err => tratarErroRequest(err));
+};
+
+const onPostNotAuthorization = async function(url, body = {}) {
+  return fetch(url, {
+    headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
@@ -80,4 +93,4 @@ const onDelete = async function(url, body = {}) {
 
 window.httpService = { onPost, onGet, onPut, onDelete };
 
-module.exports = { onPost, onGet, onPut, onDelete };
+module.exports = { onPost, onGet, onPut, onDelete , onPostNotAuthorization };

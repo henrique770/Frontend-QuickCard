@@ -23,7 +23,7 @@ export default function Routes() {
 
       <Route path="/dashboard"      component={Dashboard} isPrivate />
       <Route path="/addnote"        component={AddNote} isPrivate />
-      <Route path="/addcard"        component={AddCard} isPrivate />
+      <Route path="/addcard/:id"    component={AddCard} isPrivate />
       <Route path="/adddeck"        component={AddDeck} isPrivate />
       <Route path="/notepads"       component={NotePads} isPrivate />
       <Route path="/decks"          component={Decks} isPrivate />

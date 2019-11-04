@@ -40,7 +40,6 @@ export const Container = styled.div`
     margin-bottom: 200px;
   }
   #target {
-    display: none;
   }
 
   .Hide {

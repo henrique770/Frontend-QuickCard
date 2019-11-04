@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
-import EstudanteService from '../../services/estudante.service';
 import ServiceApi from '../../services/ApiService/api.service';
 
 // import { signInRequest } from '~/store/modules/auth/actions';
@@ -36,22 +35,22 @@ export default function SignIn() {
   async function handleSubmit(data) {
     console.log(`Login start`)
 
-    const result = await ServiceApi.login(data.username, data.password);
-    console.log(result)
+    ServiceApi.login(data.username, data.password)
+              .then( response => {
+                if (response.status == "ok") {
 
-    if (result.status == "ok") {
+                  console.log(response)
+                  window.location.reload()
+                  return false;
+                }
+              })
+              .catch( err => {
+                console.log(err)
 
-      setRedirectCard(true);
-      return false;
-    }
-
-    alert('login falha!');
+                alert('login falha!');
+              })
+  
     return false;
-  }
-
-
-  if(redirectCard) {
-    return <Redirect to="/dashboard" />
   }
 
   return (

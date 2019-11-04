@@ -1,17 +1,17 @@
 let data = [
   {
-    "__id": "79aa6727-c6a6-4f31-86f6-413a833365cc",
+    "id": "79aa6727-c6a6-4f31-86f6-413a833365cc",
     "nome": "admin",
     "senha": "admin",
     "email": "admin@admin.com",
-    "val__id": true,
+    "valid": true,
     "blocoCartao": [
       {
         "nomeBloco": "teste",
-        "_id": "c4971dc0-fb89-11e9-b74c-3dea62686597",
-        "val_id": true,
+        "id": "c4971dc0-fb89-11e9-b74c-3dea62686597",
+        "valid": true,
         "listBlocoCartao": [{
-          "_id": "943c205b-d2e4-4795-b479-510b595994fe",
+          "id": "943c205b-d2e4-4795-b479-510b595994fe",
           "frenteCartao": "Santa Teresita",
           "versoCartao": "Overhold",
           "dataVisualizacao": "20/10/2019",
@@ -20,7 +20,7 @@ let data = [
           "acertoMedio" : 2,
           "acertoDificil" : -1
         }, {
-          "_id": "3dc1d27e-eca4-4390-be09-7224ca987d26",
+          "id": "3dc1d27e-eca4-4390-be09-7224ca987d26",
           "frenteCartao": "Slovenska Bistrica",
           "versoCartao": "Voyatouch",
           "dataVisualizacao": "12/01/2018",

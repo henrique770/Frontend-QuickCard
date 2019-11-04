@@ -52,7 +52,7 @@ class ServiceApi {
       db.push(estudante)
     }
     else {
-      let itemBase = db.find(e => e._id = estudante._id)
+      let itemBase = db.find(e => e.id = estudante.id)
       let indexITem = db.indexOf(itemBase)
 
       db.slice(indexITem, 1)
@@ -84,9 +84,9 @@ class ServiceApi {
         localStorage.setItem('user', JSON.stringify(userBase));
         localStorage.setItem('userName', userBase.nome);
 
-        return true
+        userBase.status = "ok";
       }
-      return false
+      return userBase
     }
     alert('Nenhum elemento na base')
     return false
@@ -100,7 +100,7 @@ class ServiceApi {
     * }
     */
   estudanteCreated = async (estudanteModel) => {
-    estudanteModel._id = uuidv1()
+    estudanteModel.id = uuidv1()
     estudanteModel.valid = true
     this.updateDAO(estudanteModel)
     return estudanteModel
@@ -125,7 +125,7 @@ class ServiceApi {
   addBlocoCartao = async (baralho) => {
     console.log('adicionado bloco cartao')
 
-    baralho._id = uuidv1()
+    baralho.id = uuidv1()
     baralho.valid = true
 
     let userCorrent = this.getUserCorrent()
@@ -153,15 +153,15 @@ class ServiceApi {
 
   getCartaoById = async (idBlocoCartao , idCartao) => {
     let user = this.getUserCorrent()
-    let bloco = user.blocoCartao.find(e => e._id == idBlocoCartao)
+    let bloco = user.blocoCartao.find(e => e.id == idBlocoCartao)
 
-    return bloco.listBlocoCartao.find(e => e._id == idCartao)
+    return bloco.listBlocoCartao.find(e => e.id == idCartao)
   }
 
    getCartao = async idBlocoCartao => {
 
     let user = this.getUserCorrent()
-    let bloco = user.blocoCartao.find(e => e._id == idBlocoCartao)
+    let bloco = user.blocoCartao.find(e => e.id == idBlocoCartao)
 
     let listaOrdernada = this.ordernarCartaoBaralho(bloco.listBlocoCartao)
 
@@ -233,22 +233,22 @@ class ServiceApi {
    updateCartao = async (idbloco, cartao) => {
 
     let user = this.getUserCorrent()
-    let bloco = user.blocoCartao.find(e => e._id == idbloco)
+    let bloco = user.blocoCartao.find(e => e.id == idbloco)
     // atualizar cartao
     bloco.listBlocoCartao = bloco.listBlocoCartao.map(c => {
-      if (c._id != cartao._id) {
+      if (c.id != cartao.id) {
         return c
       }
-      else if (c._id == cartao._id) {
+      else if (c.id == cartao.id) {
         return cartao
       }
     })
     // atulizar bloco cartao
     user.blocoCartao = user.blocoCartao.map(bl => {
-      if (bl._id != bloco._id) {
+      if (bl.id != bloco.id) {
         return bl
       }
-      else if (bl._id == bloco._id) {
+      else if (bl.id == bloco.id) {
         return bloco
       }
     })

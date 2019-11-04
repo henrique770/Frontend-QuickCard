@@ -13,16 +13,16 @@ export default function AddDeck() {
 
     let tituloBaralho = data.currentTarget[0].value
 
-
     let result = await ServiceApi.addBlocoCartao({
       nomeBloco : tituloBaralho
-    })
-
-    if(result){
+    }).then( e => {
       window.location.href = './decks'
       return false
-    }
-
+    })
+    .catch( err => {
+      console.log(err)
+      return false
+    })
     return false
   }
 
