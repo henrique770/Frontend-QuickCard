@@ -1,7 +1,7 @@
 import server from './server';
 import serverMock from './server.mock';
 
-const isDevelopment = true;
+const isDevelopment = false;
 
 let serveApi = {};
 

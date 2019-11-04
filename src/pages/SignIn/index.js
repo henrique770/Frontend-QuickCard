@@ -1,5 +1,4 @@
-import React from 'react';
-// import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
@@ -19,6 +18,9 @@ const schema = Yup.object().shape({
 });
 
 export default function SignIn() {
+
+  let [redirectCard , setRedirectCard ] = useState(false)
+
   //  const dispatch = useDispatch();
   // async function handleSubmit({ email, senha }) {
   //    dispatch(signInRequest(email, senha));
@@ -32,16 +34,24 @@ export default function SignIn() {
   // }
 
   async function handleSubmit(data) {
+    console.log(`Login start`)
 
     const result = await ServiceApi.login(data.username, data.password);
+    console.log(result)
 
-    if (result) {
-      window.location.reload();
-      return true;
+    if (result.status == "ok") {
+
+      setRedirectCard(true);
+      return false;
     }
-    
+
     alert('login falha!');
     return false;
+  }
+
+
+  if(redirectCard) {
+    return <Redirect to="/dashboard" />
   }
 
   return (

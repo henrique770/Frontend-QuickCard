@@ -5,7 +5,7 @@ class ServiceApi {
 
   pathAuthenticate = 'authenticate';
 
-  _host = 'http://186.213.213.162:8080';
+  _host = 'http://177.17.249.158:8080';
 
     /**
      * Verificar se usuario esta valido
