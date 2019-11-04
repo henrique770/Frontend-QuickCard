@@ -54,7 +54,7 @@ export const Container = styled.div`
   }
 
   .item_performance {
-    width: 100px;
+    width: 140px;
     margin: 0 10px;
     font-weight: bold;
   }
