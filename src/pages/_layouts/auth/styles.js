@@ -1,9 +1,16 @@
 import styled from 'styled-components';
+import background from '~/assets/background.jpg';
 
 export const Wrapper = styled.div`
   // height: 100%;
-  background: linear-gradient(-90deg, #f93b10, #fe650e);
+  /* background: linear-gradient(-90deg, #f93b10, #fe650e); */
+  background: #fe650e;
+  background-image: linear-gradient(-90deg, #fe650eb8, #f93b108c),
+    url(${background});
   display: flex;
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
   justify-content: center;
   align-items: center;
