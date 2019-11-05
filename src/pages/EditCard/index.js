@@ -43,8 +43,13 @@ export default function EditCard() {
     console.log(cartaoBase)
 
     ServiceApi.updateCartao(urlParams.idBloco, cartaoBase)
-    alert('Cartão atualizado com sucesso!')
-    setRedirectCard(true)
+      .then(result => {
+        alert('Cartão atualizado com sucesso!')
+        setRedirectCard(true)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   let handleChangeFrenteCartao = (e) => {

@@ -24,11 +24,40 @@ const FlashCard = props => {
   useEffect(() => {
     const getDateCartao = async () => {
       let date = await getFlashCardinBlock()
+      console.log('card')
+      console.log(date)
       setCartao(date)
     }
 
     getDateCartao()
   }, [])
+
+  let btnAcertoDificil = (cartao) => {
+    ServiceApi.atualizarCartaoDificil(urlParams.id, cartao)
+      .then( e => {
+          let btn = document.getElementById('btn-proximo')
+          btn.click()
+      })
+      .catch(er => console.warn(er))
+  }
+
+  let btnAcertoMedio = (cartao) => {
+    ServiceApi.atualizarCartaoMedio(urlParams.id, cartao, cartao.hMedio)
+      .then( e => {
+          let btn = document.getElementById('btn-proximo')
+          btn.click()
+      })
+      .catch(er => console.warn(er))
+  }
+
+  let btnAcertoFacil = (cartao) => {
+    ServiceApi.atualizarCartaoFacil(urlParams.id, cartao, cartao.hFacil)
+      .then( e => {
+          let btn = document.getElementById('btn-proximo')
+          btn.click()
+      })
+      .catch(er => console.warn(er))
+  }
 
 
   if(cartao == null){
@@ -62,7 +91,7 @@ const FlashCard = props => {
           </div>
           <div className="row mt130 mr-4 dflex" />
           <div className="container">
-            <Link to={`/editcard/${urlParams.id}/${cartao._id}`}>
+            <Link to={`/editcard/${urlParams.id}/${cartao.id}`}>
               <Button className="btn-secondary font-weight-bold Button_padding mb-4">
                 Editar
               </Button>
@@ -89,9 +118,12 @@ const FlashCard = props => {
 
                 <section className="col">
                   <Button className="Button btn btn-primary"
+                    id='btn-proximo'
                     onClick={() => {
                       const getDateCartao = async () => {
                         let date = await getFlashCardinBlock()
+                        let element = document.getElementById('target')
+                        element.setAttribute('class' , 'Hide')
                         setCartao(date)
                       }
 
@@ -117,17 +149,17 @@ const FlashCard = props => {
                   <div className="align_performace">
 
                     <Button className="btn-secondary item_performance"
-                      onClick={() => { ServiceApi.atualizarCartaoDificil(urlParams.id, cartao) }}>
+                      onClick={() => { btnAcertoDificil(cartao) }}>
                       Errei: 10 min.
                     </Button>
 
                     <Button className="Button item_performance"
-                      onClick={() => { ServiceApi.atualizarCartaoMedio(urlParams.id, cartao, cartao.hMedio) }}>
+                      onClick={() => { btnAcertoMedio(cartao) }}>
                       Bom : {cartao.hMedio} horas
                     </Button>
 
                     <Button className="btn-secondary item_performance"
-                      onClick={() => { ServiceApi.atualizarCartaoFacil(urlParams.id, cartao, cartao.hFacil) }}>
+                      onClick={() => { btnAcertoFacil(cartao) }}>
                       Fácil : {cartao.hFacil} hora
                     </Button>
 

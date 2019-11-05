@@ -102,14 +102,14 @@ class ServiceApi {
       blocoCartaoModel
     );
   };
-  
-  
+
+
 
   // #endregion
 
   //#region CARTAO
 
-  addCartao = async (cartaoModel , idBloco) => {
+  addCartao = async (cartaoModel, idBloco) => {
     let user = this.getUserCorrent()
     cartaoModel.idEstudante = user.id
 
@@ -122,29 +122,27 @@ class ServiceApi {
 
     console.log(cartaoModel)
 
-    return httpService.onPost( `${this._host}/${this.pathCartao}/${idBloco}`, cartaoModel )
+    return httpService.onPost(`${this._host}/${this.pathCartao}/${idBloco}`, cartaoModel)
   }
 
-  getCartaoById = async (idBlocoCartao , idCartao) => {
+  getCartaoById = async (idBlocoCartao, idCartao) => {
     let user = this.getUserCorrent()
-    let bloco = user.blocoCartao.find(e => e.id == idBlocoCartao)
 
-    return bloco.listBlocoCartao.find(e => e.id == idCartao)
+    return await httpService.onGet(`${this._host}/${this.pathCartao}/${user.id}/${idCartao}`)
   }
 
-   getCartao = async idBlocoCartao => {
+  getCartao = async idBlocoCartao => {
 
     let user = this.getUserCorrent()
     let bloco = await httpService.onGet(`${this._host}/${this.pathBlocoCartao}/${user.id}/${idBlocoCartao}`)
     console.log(bloco)
-    if(bloco.cartaoMemoria == null)
-    {
+    if (bloco.cartaoMemoria == null) {
       alert('Nenhum cartao localizado')
       return;
     }
     let listaOrdernada = this.ordernarCartaoBaralho(bloco.cartaoMemoria)
 
-    let i = listaOrdernada.length > 7 ? 7 : listaOrdernada.length
+    let i = listaOrdernada.length > 2 ? 2 : listaOrdernada.length
 
     let iRandom = Math.floor(Math.random() * i)
     let cartao = listaOrdernada[iRandom]
@@ -187,14 +185,14 @@ class ServiceApi {
 
     cartao.acertoMedio += 1;
 
-    this.atualizarCartaoMedioCommom(idBloco , cartao , horaProximaVisualizacao)
+    this.atualizarCartaoMedioCommom(idBloco, cartao, horaProximaVisualizacao)
   }
 
-  atualizarCartaoFacil = (idBloco, cartao, horaProximaVisualizacao) => {
+  atualizarCartaoFacil = async (idBloco, cartao, horaProximaVisualizacao) => {
 
     cartao.acertoFacil += 1;
 
-    this.atualizarCartaoMedioCommom(idBloco , cartao , horaProximaVisualizacao)
+    this.atualizarCartaoMedioCommom(idBloco, cartao, horaProximaVisualizacao)
   }
 
   atualizarCartaoMedioCommom = async (idBloco, cartao, horaProximaVisualizacao) => {
@@ -209,12 +207,14 @@ class ServiceApi {
     this.updateCartao(idBloco, cartao)
   }
 
-   updateCartao = async (idbloco, cartao) => {
+  updateCartao = async (idbloco, cartao) => {
 
     let user = this.getUserCorrent()
-   
+
+    cartao.idEstudante = user.id
+
     // atualizar cartao
-    let bloco = await httpService.onPut(`${this._host}/${this.pathCartao}/${user.id}/${idbloco}` , cartao )
+    let bloco = await httpService.onPost(`${this._host}/${this.pathCartao}-update/${cartao.id}`, cartao)
   }
 
   ordernarCartaoBaralho(listBlocoCartao) {
